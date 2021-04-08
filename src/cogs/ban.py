@@ -7,8 +7,8 @@ class Bans(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.has_any_role("Can Ban", "Tissue")
-    async def hammer(ctx: Context, reg: str):
+    @commands.has_any_role("Can Ban")
+    async def hammer(self, ctx: Context, reg: str):
         gather_list = list([member for member in ctx.message.guild.members if member.display_name.startswith(reg)])
         await ctx.send(embed=Embed(title='Swinging Hammer on...', description='```diff\n- '+ ' | '.join([str(i) for i in gather_list]) +'```'))
         for i in gather_list:
@@ -17,12 +17,12 @@ class Bans(commands.Cog):
             await ctx.guild.ban(i)
 
     @commands.command()
-    @commands.has_any_role("Admin", "can ban", "Tissue")
-    async def gather(ctx: Context, reg: str):
+    @commands.has_any_role("Can Ban")
+    async def gather(self, ctx: Context, reg: str):
         gather_list = list([[member.name, member.id] for member in ctx.message.guild.members if member.display_name.startswith(reg)])
         await ctx.send(embed=Embed(description='```fix\n'+ ' | '.join([str(i) for i in gather_list]) +'```'))
 
 
 def setup(bot):
-    bot.add_cog(Bans(cog))
+    bot.add_cog(Bans(commands.Cog))
 

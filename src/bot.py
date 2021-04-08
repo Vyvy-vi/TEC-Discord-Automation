@@ -23,19 +23,19 @@ class Bot(commands.Bot):
 
         super().__init__(command_prefix='TEC!',
                          intents=intents)
-        self.load_cogs()
 
     def load_cogs(self) -> None:
         """Loads all the cogs for the bot"""
-        cogs = []
+        cogs = ['src.cogs.ban']
         for extension in cogs:
             self.load_extension(extension)
-            logging.info(f'Loaded cog - {Extension}')
+            logging.info(f'Loaded cog - {extension}')
 
     def run(self) -> None:
         """Runs the bot"""
         if TOKEN is None:
             raise EnvironmentError("Token value not found in .env")
+        self.load_cogs()
         super().run(TOKEN)
 
     async def on_ready(self):
