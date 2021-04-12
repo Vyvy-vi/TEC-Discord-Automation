@@ -10,6 +10,7 @@ class Bans(commands.Cog):
     @commands.command()
     @commands.has_any_role("Can Ban")
     async def hammer(self, ctx: Context, reg: str):
+        """command for banning multiple users(bots)"""
         gather_list = list(
             [member for member in ctx.message.guild.members if member.display_name.startswith(reg)])
         await ctx.send(embed=Embed(title='Swinging Hammer on...', description='```diff\n- ' + ' | '.join([str(i) for i in gather_list]) + '```'))
@@ -20,6 +21,7 @@ class Bans(commands.Cog):
 
     @commands.command()
     @commands.has_any_role("Can Ban")
+    """command to collect the names of people matching the expression. This is a check that can be used before using hammer(multi-ban)"""
     async def gather(self, ctx: Context, reg: str):
         gather_list = list([[member.name, member.id]
                             for member in ctx.message.guild.members if member.display_name.startswith(reg)])
