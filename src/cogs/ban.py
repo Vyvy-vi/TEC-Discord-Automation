@@ -21,8 +21,8 @@ class Bans(commands.Cog):
 
     @commands.command()
     @commands.has_any_role("Can Ban")
-    """command to collect the names of people matching the expression. This is a check that can be used before using hammer(multi-ban)"""
     async def gather(self, ctx: Context, reg: str):
+        """command to collect the names of people matching the expression. This is a check that can be used before using hammer(multi-ban)"""
         gather_list = list([[member.name, member.id]
                             for member in ctx.message.guild.members if member.display_name.startswith(reg)])
         await ctx.send(embed=Embed(description='```fix\n' + ' | '.join([str(i) for i in gather_list]) + '```'))

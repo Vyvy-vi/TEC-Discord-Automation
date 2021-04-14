@@ -7,6 +7,12 @@ name = "pypi"
 "discord.py" = "*"
 python-dotenv = "*"
 pyaml = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+python-dateutil = "*"
+dhooks = "*"
+pynacl = "*"
 
 [dev-packages]
 pylint-runner = "*"
@@ -19,4 +25,3 @@ lint = "pylint_runner"
 
 [requires]
 python_version = "3.9"
-
