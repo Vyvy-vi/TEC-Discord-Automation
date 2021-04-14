@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+"discord.py" = "*"
+python-dotenv = "*"
+pyaml = "*"
+
+[dev-packages]
+pylint-runner = "*"
+flake8 = "*"
+pytest = "*"
+
+[scripts]
+start = "python -m src"
+lint = "pylint_runner"
+
+[requires]
+python_version = "3.9"
+
