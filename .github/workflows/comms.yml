@@ -1,0 +1,22 @@
+name: Commms Weekly Call Reminder
+on:
+  schedule:
+    - cron:  '0 15 * * 2'
+  workflow_dispatch:
+jobs:
+  send-updates:
+    name: Sends alerts to the comms channel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2     
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+        run: pip install -r requirements.txt
+
+      - name: Send alerts to Discord
+        env:
+          WORKING_GROUP: comms
+        run: python actions/alerts.py
+        
