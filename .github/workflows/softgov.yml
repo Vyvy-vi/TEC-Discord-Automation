@@ -21,6 +21,6 @@ jobs:
           TITLE: 'Soft Gov Weekly Sync'
           TEXT: 'Join the weekly sync call at NEW Discord Soft Gov Voice Channel:\nhttps:\/\/discord.gg\/ZJ7cbpPBhW\n**AGENDA**\nhttps:\/\/docs.google.com\/document\/d\/1R8yLfht6GvGHr8VDvyZ-sVP1s54rPLY4MtXPBOqHtO0\/edit#'
           KEY: ${{ secrets.EncryptionKey }}
-          URL: '691f57262d81eedbdc667da455a736fc0f18880fe0538648f21171467f2122d46d34440d5d4df9577aa0850680ad8b756ac67f75cdba8cec4e7f842e5691153bf5f1cf195aa8cd3a093d65b57c5cfe963d6f2b76d09d67060bcdc21baaefef9a3eeb9da7a3bed9937b34c0af5df12b84e9a19629040e0b69fc034b01f2641a455fab3f41004e3bea402b1f51b88e7026dbbdf8c084ad325e7d8c8c30550c88ea'
+          URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
           TIME: 'Monday, 3pm CET Bi-weekly'
         run: python actions/alerts.py
