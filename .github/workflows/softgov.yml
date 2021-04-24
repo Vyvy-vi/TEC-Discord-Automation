@@ -1,11 +1,11 @@
-name: Commms Weekly Call Reminder
+name: TEC Soft Gov Weekly Sync
 on:
   schedule:
-    - cron:  '0 15 * * 2'
+    - cron:  '0 16 * * 1'
   workflow_dispatch:
 jobs:
   send-updates:
-    name: Sends alerts to the comms channel
+    name: Sends alerts to the SoftGov channel
     runs-on: ubuntu-latest
     steps:
       - name: Set up Python
@@ -17,11 +17,10 @@ jobs:
 
       - name: Send alerts to Discord
         env:
-          IMG: 'Banner_comms.png'
-          TITLE: 'Comms Working Group Call'
-          TEXT: 'Hi everyone 😁☀️🌈\n☎️ Comms Working Group call in 50min on Working Group VC - Comms channel https:\/\/discord.gg\/s2JuQCBNS4\nAGENDA & CALL NOTES\nhttps:\/\/docs.google.com\/document\/d\/1UTNNyYLf6WC1wlytoU9IJ46z2I32NX0MrtJOs3j9Ahw\/edit\n**MANIFESTO**\nhttps:\/\/docs.google.com\/document\/d\/17w_UVi7lJjUNtj1Ji1WGd7Osk-E0edmfIRNoGRSP3yI\/edit#\n**MIRO BOARD**\nLink: https:\/\/miro.com\/app\/board\/o9J_kjDw5AE=\/\nPassword: TokenEngineering' 
+          IMG: './resources/Banner_transparency.png'
+          TITLE: 'Soft Gov Weekly Sync'
+          TEXT: 'Join the weekly sync call at NEW Discord Soft Gov Voice Channel:\nhttps:\/\/discord.gg\/ZJ7cbpPBhW\n**AGENDA**\nhttps:\/\/docs.google.com\/document\/d\/1R8yLfht6GvGHr8VDvyZ-sVP1s54rPLY4MtXPBOqHtO0\/edit#'
           KEY: ${{ secrets.EncryptionKey }}
           URL: '691f57262d81eedbdc667da455a736fc0f18880fe0538648f21171467f2122d46d34440d5d4df9577aa0850680ad8b756ac67f75cdba8cec4e7f842e5691153bf5f1cf195aa8cd3a093d65b57c5cfe963d6f2b76d09d67060bcdc21baaefef9a3eeb9da7a3bed9937b34c0af5df12b84e9a19629040e0b69fc034b01f2641a455fab3f41004e3bea402b1f51b88e7026dbbdf8c084ad325e7d8c8c30550c88ea'
-          TIME: 'Tuesday, 6pm CET'
+          TIME: 'Monday, 3pm CET Bi-weekly'
         run: python actions/alerts.py
-
