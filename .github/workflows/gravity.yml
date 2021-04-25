@@ -1,0 +1,28 @@
+name: Gravity WG Weekly Sync
+on:
+  schedule:
+    - cron:  '0 18 * * 5'
+  workflow_dispatch:
+jobs:
+  send-updates:
+    name: Sends alerts to the gravity channel
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v2     
+        with:
+          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+
+      - name: Install Dependencies
+        run: pip install -r actions/requirements.txt
+
+      - name: Send alerts to Discord
+        env:
+          IMG: 'Banner_gravity.png'
+          TITLE: 'Gravity WG Weekly Sync'
+          TEXT: 'Hello Everyone!\nAll invited to join our Gravity Wg Call, all Thursdays after community calls. 🕊️\n👩You can follow the notes of our sessions here:\nhttps:\/\/docs.google.com\/document\/d\/19tpH6EU8jYX4FQ0CBtUf0MdsLzjpVo5x7n9W38u9Us4\/edit?usp=sharing\n🚀 Check our roadmap in the manifesto:\nhttps:\/\/docs.google.com\/document\/d\/1yrEcPoOW8Q1qDE-YWWF0MhXlcvpiMk0jmdQx25nfZ6k\/edit?usp=sharing' 
+          KEY: ${{ secrets.EncryptionKey }}
+          URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
+          TIME: 'Thursday, 9pm CET'
+        run: python actions/alerts.py
