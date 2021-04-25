@@ -37,7 +37,7 @@ if __name__ == '__main__':
     IMG = "https://raw.githubusercontent.com/Vyvy-vi/TEC-Discord-Automation/main/.github/resources/" + \
         os.environ['IMG']
     TITLE = os.environ['TITLE']
-    TEXT = str(os.environ['TEXT'])
+    TEXT = str(os.environ['TEXT']).replace('\\n', '\n')
     HOOK_URL = os.environ['URL']
     TIME = os.environ['TIME']
     main(KEY, TITLE, TEXT, IMG, HOOK_URL, TIME)
