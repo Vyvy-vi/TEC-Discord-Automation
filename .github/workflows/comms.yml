@@ -1,4 +1,4 @@
-name: Commms Weekly Call Reminder
+name: Comms Weekly Call Reminder
 on:
   schedule:
     - cron:  '0 15 * * 2'
@@ -23,7 +23,8 @@ jobs:
           TITLE: 'Comms Working Group Call'
           TEXT: 'Hi everyone 😁☀️🌈\n☎️ Comms Working Group call in 50min on Working Group VC - Comms channel https:\/\/discord.gg\/s2JuQCBNS4\nAGENDA & CALL NOTES\nhttps:\/\/docs.google.com\/document\/d\/1UTNNyYLf6WC1wlytoU9IJ46z2I32NX0MrtJOs3j9Ahw\/edit\n**MANIFESTO**\nhttps:\/\/docs.google.com\/document\/d\/17w_UVi7lJjUNtj1Ji1WGd7Osk-E0edmfIRNoGRSP3yI\/edit#\n**MIRO BOARD**\nLink: https:\/\/miro.com\/app\/board\/o9J_kjDw5AE=\/\nPassword: TokenEngineering' 
           KEY: ${{ secrets.ENCRYPTION_KEY }}
-          URL: '8ef910a95622fa2e7b9cc64f172e58e1f7dc9f10817caa43cfb322ae61b211df5f9e536463fa1dc23bef9708442240b0eceb2d02c1e33325f5d7a0f28e34ce74d6d6ccc94a06a3f2fea1441b257195e92adcded2639bbb12df97ecb51ada44df560497c349951f3ed2ddc029f32c4df468295783c516ad869c8bee8f829a78e606a3c709f7e69b94792860265bbf7c13b9d73f888b96ce66d618c3e88a225e7b'
+          URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
+ 
           TIME: 'Tuesday, 6pm CET'
         run: |
           python actions/alerts.py
