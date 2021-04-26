@@ -1,0 +1,29 @@
+name: TEC Commons Swarm Weekly sync
+on:
+  schedule:
+    - cron:  '0 17 * * 1'
+  workflow_dispatch:
+jobs:
+  send-updates:
+    name: Sends alerts to the commons-swarm channel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2    
+      - uses: actions/setup-python@v2
+        name: Set up Python
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Install Dependencies
+        run: |
+          pip install -r actions/requirements.txt
+      - name: Send updates
+        env:
+          IMG: 'Banner_commons.png'
+          TITLE: 'TEC Commons Swarm Weekly sync'
+          TEXT: 'Join Commons Swarm Weekly sync call in 1h\nLink: [https://discord.gg/gSruFFZjcH](https://discord.gg/gSruFFZjcH)\n**AGENDA AND NOTES**\n[https://docs.google.com/document/d/159YbgyeCkcUYqpiq49rTh5CeRnmF4u_GYkr3UDUtJpk/edit?usp%3Dsharing&sa=D&source=calendar&usd=2&usg=AOvVaw3Thlr33kR2QuDdslqc1ME4](https://docs.google.com/document/d/159YbgyeCkcUYqpiq49rTh5CeRnmF4u_GYkr3UDUtJpk/edit?usp%3Dsharing&sa=D&source=calendar&usd=2&usg=AOvVaw3Thlr33kR2QuDdslqc1ME4)' 
+          KEY: ${{ secrets.ENCRYPTION_KEY }}
+          URL: '7b8730e42a15537bb831faf03586773665243884b48cdf6666e7c1c34a9b0fc716a3ad5749c35fb88ab27d9640a435ea659c5bd8d2c18e7db5e826edf00087956b563004a1fd4183b364cda8450cb204df8a0ec8a10b3bdd909e2912e2c6800c6adb297d50172430c1af8fa55661044d2146a1c7f467635e7504d1dd5734f44acc64246acc835b3e7719e110a060d245df072a1691542f59f746442ba5c09671'
+          TIME: 'Monday, 8pm CET'
+        run: |
+          python actions/alerts.py
