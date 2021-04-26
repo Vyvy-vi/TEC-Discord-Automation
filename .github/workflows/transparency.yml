@@ -1,6 +1,3 @@
-          TEXT:  
-
-
 name: Transparency WG Sync
 on:
   schedule:
