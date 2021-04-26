@@ -1,4 +1,4 @@
-name: Commms Weekly Call Reminder
+name: Comms Weekly Call Reminder
 on:
   schedule:
     - cron:  '0 15 * * 2'
@@ -8,21 +8,22 @@ jobs:
     name: Sends alerts to the comms channel
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v2     
+      - uses: actions/checkout@v2    
+      - uses: actions/setup-python@v2
+        name: Set up Python
         with:
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-
+          python-version: '3.8'
+          architecture: 'x64'
       - name: Install Dependencies
-        run: pip install -r actions/requirements.txt
-
-      - name: Send alerts to Discord
+        run: |
+          pip install -r actions/requirements.txt
+      - name: Send updates
         env:
           IMG: 'Banner_comms.png'
           TITLE: 'Comms Working Group Call'
-          TEXT: 'Hi everyone 😁☀️🌈\n☎️ Comms Working Group call in 50min on Working Group VC - Comms channel https:\/\/discord.gg\/s2JuQCBNS4\nAGENDA & CALL NOTES\nhttps:\/\/docs.google.com\/document\/d\/1UTNNyYLf6WC1wlytoU9IJ46z2I32NX0MrtJOs3j9Ahw\/edit\n**MANIFESTO**\nhttps:\/\/docs.google.com\/document\/d\/17w_UVi7lJjUNtj1Ji1WGd7Osk-E0edmfIRNoGRSP3yI\/edit#\n**MIRO BOARD**\nLink: https:\/\/miro.com\/app\/board\/o9J_kjDw5AE=\/\nPassword: TokenEngineering' 
-          KEY: ${{ secrets.EncryptionKey }}
+          TEXT: 'Hi everyone 😁☀️🌈\n☎️ Comms Working Group call in 1hour on Working Group VC - Comms channel\n[https://discord.gg/s2JuQCBNS4](https://discord.gg/s2JuQCBNS4)\n**AGENDA & CALL NOTES**\n[https://docs.google.com/document/d/1UTNNyYLf6WC1wlytoU9IJ46z2I32NX0MrtJOs3j9Ahw/edit](https://docs.google.com/document/d/1UTNNyYLf6WC1wlytoU9IJ46z2I32NX0MrtJOs3j9Ahw/edit)\n**MANIFESTO**\n[https://docs.google.com/document/d/17w_UVi7lJjUNtj1Ji1WGd7Osk-E0edmfIRNoGRSP3yI/edit#](https://docs.google.com/document/d/17w_UVi7lJjUNtj1Ji1WGd7Osk-E0edmfIRNoGRSP3yI/edit#)\n**MIRO BOARD**\nLink: [https://miro.com/app/board/o9J_kjDw5AE=/](https://miro.com/app/board/o9J_kjDw5AE=/)\nPassword: TokenEngineering' 
+          KEY: ${{ secrets.ENCRYPTION_KEY }}
           URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
           TIME: 'Tuesday, 6pm CET'
-        run: python actions/alerts.py
-
+        run: |
+          python actions/alerts.py

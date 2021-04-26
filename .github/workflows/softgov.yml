@@ -1,28 +1,29 @@
 name: TEC Soft Gov Weekly Sync
 on:
   schedule:
-    - cron:  '0 16 * * 1'
+    - cron:  '0 16 * * 2'
   workflow_dispatch:
 jobs:
   send-updates:
-    name: Sends alerts to the SoftGov channel
+    name: Send alerts to the softgov channel
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v2     
+      - uses: actions/checkout@v2    
+      - uses: actions/setup-python@v2
+        name: Set up Python
         with:
-          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-
+          python-version: '3.8'
+          architecture: 'x64'
       - name: Install Dependencies
-        run: pip install -r actions/requirements.txt
-
-      - name: Send alerts to Discord
+        run: |
+          pip install -r actions/requirements.txt
+      - name: Send updates
         env:
-          IMG: './resources/Banner_transparency.png'
+          IMG: 'Banner_softgov.png'
           TITLE: 'Soft Gov Weekly Sync'
-          TEXT: 'Join the weekly sync call at NEW Discord Soft Gov Voice Channel:\nhttps:\/\/discord.gg\/ZJ7cbpPBhW\n**AGENDA**\nhttps:\/\/docs.google.com\/document\/d\/1R8yLfht6GvGHr8VDvyZ-sVP1s54rPLY4MtXPBOqHtO0\/edit#'
-          KEY: ${{ secrets.EncryptionKey }}
+          TEXT: 'Join the weekly sync call at NEW Discord Soft Gov Voice Channel:\n[https://discord.gg/ZJ7cbpPBhW](https://discord.gg/ZJ7cbpPBhW)\n**AGENDA**\n[https://docs.google.com/document/d/1R8yLfht6GvGHr8VDvyZ-sVP1s54rPLY4MtXPBOqHtO0/edit#](https://docs.google.com/document/d/1R8yLfht6GvGHr8VDvyZ-sVP1s54rPLY4MtXPBOqHtO0/edit#)' 
+          KEY: ${{ secrets.ENCRYPTION_KEY }}
           URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
-          TIME: 'Monday, 3pm CET Bi-weekly'
-        run: python actions/alerts.py
+          TIME: 'Tuesday, 7pm CET'
+        run: |
+          python actions/alerts.py

@@ -8,21 +8,22 @@ jobs:
     name: Sends alerts to the transparency channel
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python
-        uses: actions/setup-python@v2     
+      - uses: actions/checkout@v2    
+      - uses: actions/setup-python@v2
+        name: Set up Python
         with:
-          python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
-          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
-
+          python-version: '3.8'
+          architecture: 'x64'
       - name: Install Dependencies
-        run: pip install -r actions/requirements.txt
-
-      - name: Send alerts to Discord
+        run: |
+          pip install -r actions/requirements.txt
+      - name: Send updates
         env:
-          IMG: './resources/Banner_transparency.png'
-          TITLE: 'Gravity WG Weekly Sync'
-          TEXT: '☎️ Transparency WG Call in 1h\n🌟On the Transparency Voice Channel: https:\/\/discord.gg\/CRSKAJtFMH\n**AGENDA & NOTES**\nhttps:\/\/docs.google.com\/document\/d\/1jbuqlIXd3s9gRwXbT9ND0zUbE0MaEP9EyO6sHY46iOY\/edit\n**MANIFESTO**\nhttps:\/\/docs.google.com\/document\/d\/19-YlxdBuivR6qwSTPvlSP6kSLExUDSYT5frp7qaArFI\/edit#heading=h.4qr126s3qfr1\nLook forward to seeing you all there - have a beautiful day! 🌈' 
-          KEY: ${{ secrets.EncryptionKey }}
-          URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
-          TIME: 'Monday, 3pm CET Bi-weekly'
-        run: python actions/alerts.py
+          IMG: 'Banner_transparency.png'
+          TITLE: 'Transparency WG Sync'
+          TEXT: '☎️ Transparency WG Call in 1h\n🌟On the Transparency Voice Channel: [https://discord.gg/CRSKAJtFMH](https://discord.gg/CRSKAJtFMH)\n**AGENDA & NOTES**\n[https://docs.google.com/document/d/1jbuqlIXd3s9gRwXbT9ND0zUbE0MaEP9EyO6sHY46iOY/edit](https://docs.google.com/document/d/1jbuqlIXd3s9gRwXbT9ND0zUbE0MaEP9EyO6sHY46iOY/edit)\n**MANIFESTO**\n[https://docs.google.com/document/d/19-YlxdBuivR6qwSTPvlSP6kSLExUDSYT5frp7qaArFI/edit#heading=h.4qr126s3qfr1](https://docs.google.com/document/d/19-YlxdBuivR6qwSTPvlSP6kSLExUDSYT5frp7qaArFI/edit#heading=h.4qr126s3qfr1)\nLook forward to seeing you all there - have a beautiful day! 🌈' 
+          KEY: ${{ secrets.ENCRYPTION_KEY }}
+          URL: '03f6f819b1e3386eddd0f14ac7f8c83840d96d3c86c440f1c0bb23e210a03f8a892e108f2caf296fa4bcebe4e3a2d74c733ad766c514daab76631addad133d0beb105a0c8caa16af306a20865d01583d2c4a558ecc2de18039a71cbbc33d13fafe40cb6a93ba491392f84c9810e5b4a43ed1ca8d7249ade697968aa54d46af742e30616ec41f2f8b2fcc182cdf2ff5d36b55add0e5a1b70e5907f1d41528d884'
+          TIME: 'Monday 3pm CET, Bi-weekly'
+        run: |
+          python actions/alerts.py
