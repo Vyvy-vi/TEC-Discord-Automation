@@ -23,7 +23,7 @@ jobs:
           TITLE: 'Soft Gov Weekly Sync'
           TEXT: 'Join the weekly sync call at NEW Discord Soft Gov Voice Channel:\n[https://discord.gg/ZJ7cbpPBhW](https://discord.gg/ZJ7cbpPBhW)\n**AGENDA**\n[https://docs.google.com/document/d/1R8yLfht6GvGHr8VDvyZ-sVP1s54rPLY4MtXPBOqHtO0/edit#](https://docs.google.com/document/d/1R8yLfht6GvGHr8VDvyZ-sVP1s54rPLY4MtXPBOqHtO0/edit#)' 
           KEY: ${{ secrets.ENCRYPTION_KEY }}
-          URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
+          URL: 'afb30f7f3aad412eaa1c1daa3734809c9c3e6b8a91cff02df4094b0cbcd462dd9f5bc55932dc282848922c4f544cc6eaec00c3d76aa1c8bb12670b2785e3080ae10bff5ac3f3b2998a6ad9302b31097a9700ae0ac9c8ebaebc5af5b98970653878015a7d2af7f7c61f0590280eb9c3eae17dff8c57354178c8c01c2de729234cfe0a8c18bf45de752a35aacf1572833732cb9a99e1f5c9d2a4e8b7065a76f60f'
           TIME: 'Tuesday, 7pm CET'
         run: |
           python actions/alerts.py
