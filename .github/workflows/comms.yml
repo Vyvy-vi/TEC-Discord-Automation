@@ -23,7 +23,7 @@ jobs:
           TITLE: 'Comms Working Group Call'
           TEXT: 'Hi everyone 😁☀️🌈\n☎️ Comms Working Group call in 1hour on Working Group VC - Comms channel\n[https://discord.gg/s2JuQCBNS4](https://discord.gg/s2JuQCBNS4)\n**AGENDA & CALL NOTES**\n[https://docs.google.com/document/d/1UTNNyYLf6WC1wlytoU9IJ46z2I32NX0MrtJOs3j9Ahw/edit](https://docs.google.com/document/d/1UTNNyYLf6WC1wlytoU9IJ46z2I32NX0MrtJOs3j9Ahw/edit)\n**MANIFESTO**\n[https://docs.google.com/document/d/17w_UVi7lJjUNtj1Ji1WGd7Osk-E0edmfIRNoGRSP3yI/edit#](https://docs.google.com/document/d/17w_UVi7lJjUNtj1Ji1WGd7Osk-E0edmfIRNoGRSP3yI/edit#)\n**MIRO BOARD**\nLink: [https://miro.com/app/board/o9J_kjDw5AE=/](https://miro.com/app/board/o9J_kjDw5AE=/)\nPassword: TokenEngineering' 
           KEY: ${{ secrets.ENCRYPTION_KEY }}
-          URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
+          URL: 'f915a4aefb1ff6ee1eaea3af5b5b2f38b2b7c227395e5b16538feae3785c0ce9909e4e2bc383e11f8a6d82632a471d7bd04287689c9af478d5b96c64c6efee2a091077990f0503c31f02caddc2f74fee43f100da0e16ea81f4402a2dab61ffcc4ea51689a93aaa60a72060c79365ad37d76f6789151b75f4d0f3cb5338cdf072af8cd282d4c3ef343105a8de307d6bb992d19c2dc1b8d070c6a70ba3f7e28dd9'
           TIME: 'Tuesday, 6pm CET'
         run: |
           python actions/alerts.py
