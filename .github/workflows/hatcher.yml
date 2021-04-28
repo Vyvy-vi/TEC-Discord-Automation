@@ -1,0 +1,29 @@
+name: TEC Hatch Outreach Weekly Sync
+on:
+  schedule:
+    - cron:  '0 15 * * 3'
+  workflow_dispatch:
+jobs:
+  send-updates:
+    name: Send alert to Hatch Outreach Channel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2    
+      - uses: actions/setup-python@v2
+        name: Set up Python
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Install Dependencies
+        run: |
+          pip install -r actions/requirements.txt
+      - name: Send updates
+        env:
+          IMG: 'Banner_hatcher.png'
+          TITLE: 'TEC Hatch Outreach Weekly Sync'
+          TEXT: "**Welcome to the Hatch Outreach Working Group call!**\n\nThis working group session, is to tackle the onboarding of Hatchers and Proposal in order to make the Hatch possible.\nIf you wanna know what is a Hatcher, the Hatch or any other question, [check our FAQ](https://docs.google.com/document/d/16UI-EfD4qcwBaAv3Eexlv01SOK7oiDt4gkVT5rEY6X4/edit%23&sa=D&source=calendar&usd=2&usg=AOvVaw1jUdcXPDruDvoYpup8sTGX).\nWe meet at the [Hatch Outreach Discord Voice Channel](https://discord.gg/5udK7DM3&sa=D&source=calendar&usd=2&usg=AOvVaw2Uiy60qLpDoEjjMt38oskt).\nAnd this our [Agenda and Notes](https://docs.google.com/document/d/1DsaTuJ6s9CXfe-YT6Y0KmtKbAKHv6jPLEBdPKxNUSZs/edit&sa=D&source=calendar&usd=2&usg=AOvVaw09SDELxomw4d0S9MZxASSO), feel free to add any topic or point to the agenda.\nLooking forward to seeing you on the call!"
+          KEY: ${{ secrets.ENCRYPTION_KEY }}
+          URL: '824c5c56e25dd42ccd4b65e5153bb304d08f98c4f34991c20222016496b797eaf03e74c583e48e3f33401df9183afa7a3dc6aeb73b24826b00fa9a2f152e4d729dc6ccbcac29bb7d591eeee423e434374558d1cc5ed7eb14b040bee1ddecd870f8db36d3b40eb5c9eb9e0aef08e43c49bcc2f2334a705ca7a508d31341860caa70dad73979cf0f6e9d9768721aae30b50606fede56cde70c2ab448aa9216fb5c'
+          TIME: 'Wednesday, 6pm CET'
+        run: |
+          python actions/alerts.py
