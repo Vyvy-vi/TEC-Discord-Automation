@@ -1,0 +1,29 @@
+name: TEC Stewards Weekly Call
+on:
+  schedule:
+    - cron:  '0 16 * * 3'
+  workflow_dispatch:
+jobs:
+  send-updates:
+    name: Send alert to the Stewards channel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2    
+      - uses: actions/setup-python@v2
+        name: Set up Python
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Install Dependencies
+        run: |
+          pip install -r actions/requirements.txt
+      - name: Send updates
+        env:
+          IMG: 'Banner_stewards.png'
+          TITLE: 'TEC Stewards Weekly Call'
+          TEXT: "TEC Community Stewards [Agenda & Notes](https://docs.google.com/document/d/1VQNgAThqMLaQrF21uoQabWelnyJKLtX-TbqOl8kVb0Q/edit&sa=D&source=calendar&usd=2&usg=AOvVaw30m1QQElvkqA3zvqkV4EMJ)\nCall in Stewards Discord Voice channel: [https://discord.gg/bkx7DAgTN6](https://discord.gg/bkx7DAgTN6)"
+          KEY: ${{ secrets.ENCRYPTION_KEY }}
+          URL: 'f914b87713f46c03a8f67ac86861de8274da6c65e9967f8d4c8b30c591b7c748ca6e10b4064bd095a0f69b46d046b27a19825eabd3dd2ef2d38366ad0fe116f068d993393511e55ebc3a38b63f6c1031bbefc47850f83125a356d4e6f67e93e007c3879ba9c21a040c4f0cc7d607a24afd7096035cd22cb52375ac8e4045f61f864ecd2bbae4c5f01dcacf4abb777d69e1345907bebe73a041f7e5f0b397283e'
+          TIME: 'Wednesday, 7pm CET'
+        run: |
+          python actions/alerts.py
