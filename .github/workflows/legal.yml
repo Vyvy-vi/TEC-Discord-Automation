@@ -1,0 +1,29 @@
+name: TEC Legal Weekly Sync
+on:
+  schedule:
+    - cron:  '0 13 * * 5'
+  workflow_dispatch:
+jobs:
+  send-updates:
+    name: Send alert to the legal channel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2    
+      - uses: actions/setup-python@v2
+        name: Set up Python
+        with:
+          python-version: '3.8'
+          architecture: 'x64'
+      - name: Install Dependencies
+        run: |
+          pip install -r actions/requirements.txt
+      - name: Send updates
+        env:
+          IMG: 'Banner_legal.png'
+          TITLE: 'TEC Legal Weekly Sync'
+          TEXT: "Legal Weekly Sync call in 1hour in legal voice channel\n[https://discord.gg/UKZvteTx5Z](https://discord.gg/UKZvteTx5Z)\n**Manifesto:** [https://docs.google.com/document/d/1SqBWgu1WnwbKWBC5nubhCjDwf-TjRnunhev0kWUepAU/edit?usp=sharing](https://docs.google.com/document/d/1SqBWgu1WnwbKWBC5nubhCjDwf-TjRnunhev0kWUepAU/edit?usp=sharing)\n**Agenda:** [https://docs.google.com/document/d/19Wfa1qLcCXFAra5F8gJtZ0ehOcSuUehIr75oWr8sNrM/edit?usp=sharing](https://docs.google.com/document/d/19Wfa1qLcCXFAra5F8gJtZ0ehOcSuUehIr75oWr8sNrM/edit?usp=sharing)"
+          KEY: ${{ secrets.ENCRYPTION_KEY }}
+          URL: '0e632b4b542885826677480b30669002a24b6752680588f4e27dafbcecc752b2212aa6aac92ad295468220c44f18f82d2b771a9bc888da8f8419e708873b6cf66564e5785aef480bb7507636b62155d4e19b3f83b8d675df341e818d24755f82157b73bbf668c90e6a8f42ea754a30b5513ec0c92bb14350dc96fb00f07d9788f4f4fe8347bdd7a3b1d98c1fcac9f4807c5d6eb32074b29e7d46ef0170e27ec5'
+          TIME: 'Friday, 4pm CET'
+        run: |
+          python actions/alerts.py
