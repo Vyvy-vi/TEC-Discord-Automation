@@ -23,7 +23,7 @@ jobs:
           TITLE: 'Gravity WG Weekly Sync'
           TEXT: 'Hello Everyone!\nAll invited to join our Gravity Wg Call, all Thursdays after community calls. 🕊️\n👩You can follow the notes of our sessions here:\n[https://docs.google.com/document/d/19tpH6EU8jYX4FQ0CBtUf0MdsLzjpVo5x7n9W38u9Us4/edit?usp=sharing](https://docs.google.com/document/d/19tpH6EU8jYX4FQ0CBtUf0MdsLzjpVo5x7n9W38u9Us4/edit?usp=sharing)\n🚀 Check our roadmap in the manifesto:\n[https://docs.google.com/document/d/1yrEcPoOW8Q1qDE-YWWF0MhXlcvpiMk0jmdQx25nfZ6k/edit?usp=sharing](https://docs.google.com/document/d/1yrEcPoOW8Q1qDE-YWWF0MhXlcvpiMk0jmdQx25nfZ6k/edit?usp=sharing)' 
           KEY: ${{ secrets.ENCRYPTION_KEY }}
-          URL: 'abef404511debaf41f3160b3d16224d1e7898d4abd6644deadea03dba234625e08a7c8b3a9a6818b583ad693286167cf6ef78f132852121a0a174daf2449d276c89090c9fced7178cdf2a35b50159c0905afb523af1fa12f6667311504202e4bd396c7da29e0786035586b69eb34b2314d566d30855ae645c313d98ebb583d7da4fc46f1cc0cb8518a8c261c686872ab4b927e483b211863ff4ff8b094545a7c'
+          URL: 'a09a8b8fba78eb3e992e297b2e3f7ef26ea4745a4ded1585d6535640c4693e2d7189c00d005791d6a569d0ac70ffbce4a41249b6c6564ef20f48dc92b5bd20aa0fc1d7d83e54907d49cc5d8441a20f0a16276b591774578983a723805259bcf340be3d43c25f3fadfea50cc8d5953c945c1d68acc3bf9e214c8d939eca15ba7b535176f15329bfd742443f555d3c15fa038f3a084e1a57b7bdfec6421be59410'
           TIME: 'Thursday, 9pm CET'
         run: |
           python actions/alerts.py
