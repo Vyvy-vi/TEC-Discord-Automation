@@ -1,4 +1,4 @@
-name: TEC Legal Weekly Sync
+name: TEC Community Call
 on:
   schedule:
     - cron:  '50 17 * * 4'
@@ -20,7 +20,7 @@ jobs:
       - name: Send updates
         env:
           IMG: 'Banner_community_call.png'
-          TITLE: 'TEC Legal Weekly Sync'
+          TITLE: 'TEC Community Call'
           TEXT: "TEC Community Call in 10mins in [Community Hall Voice Channel](https://discord.gg/fNPx3a2h9R). We are excited to invite you to help us keep pushing the TE Commons Cultural Build forward!\nEvery week we get closer to creating a sustainable funding stream for the Token Engineering Community's efforts to build a **safer world with digital socio-economic public infrastructures that are diversely designed and aligned with collective needs!**\nNEW NEW NEW [Agenda](https://docs.google.com/presentation/d/1msWeZyBOURMEMqF_WtsmYqaBnBCQz7oKkKLp2xxpwIE/edit?usp%3Dsharing&sa=D&source=calendar&usd=2&usg=AOvVaw0r9ZIP-gEtaThpgN4ROLdk)\nHere is the [Discord room we organize in 🏡](https://discord.gg/fNPx3a2h9R&sa=D&source=calendar&usd=2&usg=AOvVaw00N4MaMhIzp7oNxg8QKiaO)\nHere is the [TE Commons Handbook 🌿](https://docs.google.com/document/d/1ouFisWOfJgqi7nQODvXQqNg0T49jmZGZalPFvpB121c/edit%23heading%3Dh.ko4v3w80u028&sa=D&source=calendar&usd=2&usg=AOvVaw0N_tQRAv8Wsn13IA4UIS0v)"
           KEY: ${{ secrets.ENCRYPTION_KEY }}
           URL: '8ef910a95622fa2e7b9cc64f172e58e1f7dc9f10817caa43cfb322ae61b211df5f9e536463fa1dc23bef9708442240b0eceb2d02c1e33325f5d7a0f28e34ce74d6d6ccc94a06a3f2fea1441b257195e92adcded2639bbb12df97ecb51ada44df560497c349951f3ed2ddc029f32c4df468295783c516ad869c8bee8f829a78e606a3c709f7e69b94792860265bbf7c13b9d73f888b96ce66d618c3e88a225e7b'
