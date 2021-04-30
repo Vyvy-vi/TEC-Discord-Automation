@@ -27,6 +27,5 @@ class Bans(commands.Cog):
                             for member in ctx.message.guild.members if member.display_name.startswith(reg)])
         await ctx.send(embed=Embed(description='```fix\n' + ' | '.join([str(i) for i in gather_list]) + '```'))
 
-
 def setup(bot):
     bot.add_cog(Bans(bot))

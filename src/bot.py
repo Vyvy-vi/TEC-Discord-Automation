@@ -29,7 +29,9 @@ class Bot(commands.Bot):
 
     def load_cogs(self) -> None:
         """Loads all the cogs for the bot"""
-        cogs = ['src.cogs.ban', 'src.cogs.alerts']
+        cogs = ['src.cogs.ban',
+                'src.cogs.alerts',
+                'src.cogs.sourcecred']
         for extension in cogs:
             self.load_extension(extension)
             logging.info(f'Loaded cog - {extension}')
