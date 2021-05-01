@@ -21,8 +21,8 @@ class CustomHelp(commands.HelpCommand):
         embed = Embed(title="Help Categories",
                       description=HelpDesc,
                       colour=0xdefb48)
-        for cog, commands in mapping.items():
-            filtered = await self.filter_commands(commands, sort=True)
+        for cog, cmds in mapping.items():
+            filtered = await self.filter_commands(cmds, sort=True)
             command_signatures = [self.get_command_signature(c) for c in filtered]
             if command_signatures:
                 cog_name = getattr(cog, "qualified_name", "No Category")
@@ -62,6 +62,14 @@ class CustomHelp(commands.HelpCommand):
                 embed.add_field(name=cmd[0], value=cog.description + cmd[1], inline=False)
         embed.set_footer(text='For any more info, dm @Vyvy-vi#5040')
         await self.context.send(embed=embed)
+
+    # Error Handling
+    async def send_error_message(self, error):
+        embed = Embed(title="Error",
+                      description=error,
+                      color=Color.red())
+        await self.context.send(embed=embed)
+
 
 
 class Helpers(commands.Cog):
