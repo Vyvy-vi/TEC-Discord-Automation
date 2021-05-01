@@ -4,6 +4,7 @@ from discord.ext.commands import Context
 
 
 class Alerts(commands.Cog):
+    """Commands to send daily schedules in discord chat"""
     def __init__(self, bot):
         self.bot = bot
 

@@ -3,7 +3,8 @@ from discord.ext import commands
 from discord.ext.commands import Context
 
 
-class Bans(commands.Cog):
+class Admin(commands.Cog):
+    """Commands for server administration and moderation"""
     def __init__(self, bot):
         self.bot = bot
 
@@ -28,4 +29,4 @@ class Bans(commands.Cog):
         await ctx.send(embed=Embed(description='```fix\n' + ' | '.join([str(i) for i in gather_list]) + '```'))
 
 def setup(bot):
-    bot.add_cog(Bans(bot))
+    bot.add_cog(Admin(bot))
