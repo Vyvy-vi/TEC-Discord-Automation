@@ -2,7 +2,6 @@ import os
 import discord
 import asyncio
 import logging
-import yaml
 
 from dotenv import load_dotenv
 from discord.ext import commands
@@ -45,5 +44,3 @@ class Bot(commands.Bot):
 
     async def on_ready(self):
         logging.info('Starting...')
-        with open('src/resources/templates.yml') as file:
-            self.TEMPLATES = yaml.safe_load(file)
