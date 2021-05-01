@@ -7,6 +7,7 @@ Use `TEC!help category` for more info on a category\n\
 Use `TEC!help command` for more info on a command\n\
 For any problems, open an issue on the [Github Repo](https://github.com/Vyvy-vi/TEC-Discord-Automation/issues)"
 
+
 class CustomHelp(commands.HelpCommand):
     def get_command_signature(self, command):
         cmd = "%s%s %s" % (self.clean_prefix, command.qualified_name, command.signature)
@@ -30,7 +31,7 @@ class CustomHelp(commands.HelpCommand):
         embed.set_footer(text='For any more info, dm @Vyvy-vi#5040')
         await self.context.send(embed=embed)
 
-   # TEC!help <command>
+    # TEC!help <command>
     async def send_command_help(self, command):
         embed = Embed(title=self.get_command_signature(command),
                       color=0xdefb48)
@@ -42,19 +43,18 @@ class CustomHelp(commands.HelpCommand):
         embed.set_footer(text='For any more info, dm @Vyvy-vi#5040')
         await self.context.send(embed=embed)
 
-   # TEC!help <group>
+    # TEC!help <group>
     async def send_group_help(self, group):
-        embed = Embed(title=f"Help for Category: `{cog_name}`",
-                      description=HelpDesic + '\nThat group doesn\'t exist',
+        embed = Embed(title="Help",
+                      description=HelpDesc + '\nThat group doesn\'t exist',
                       colour=Color.Red())
         await self.context.send(embed=embed)
 
-   # TEC!help <cog>
+    # TEC!help <cog>
     async def send_cog_help(self, cog):
         cog_name = getattr(cog, "qualified_name", "No Category")
         embed = Embed(title=f"Help for Category: `{cog_name}`",
-                      description="Use TEC!help command for more info on a command"
-                      + f'\n\n**{cog.description}**',
+                      description="Use TEC!help command for more info on a command" + f'\n\n**{cog.description}**',
                       colour=0xdefb48)
         commands = [self.get_help_text(c) for c in await self.filter_commands(cog.walk_commands(), sort=True)]
         if commands:
@@ -71,7 +71,6 @@ class CustomHelp(commands.HelpCommand):
         await self.context.send(embed=embed)
 
 
-
 class Helpers(commands.Cog):
     """Help command and some other helper commands"""
     def __init__(self, bot):
@@ -81,7 +80,7 @@ class Helpers(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def ping(self, ctx):
+    async def ping(self, ctx: Context):
         await ctx.send('Pong!')
 
 
