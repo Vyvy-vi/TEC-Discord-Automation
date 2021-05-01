@@ -12,6 +12,7 @@ def write_data(data):
     return
 
 class Sourcecred(commands.Cog):
+    """Commands for collecting data for SourceCred or wallet lists"""
     def __init__(self, bot):
         self.bot = bot
         self.data = []
