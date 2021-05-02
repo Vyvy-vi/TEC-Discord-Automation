@@ -13,6 +13,10 @@ google-auth-oauthlib = "*"
 python-dateutil = "*"
 dhooks = "*"
 pynacl = "*"
+motor = "*"
+dnspython = "*"
+web3 = "*"
+table2ascii = "*"
 
 [dev-packages]
 pylint-runner = "*"
