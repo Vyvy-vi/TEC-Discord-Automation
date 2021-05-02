@@ -7,11 +7,10 @@ from dotenv import load_dotenv
 from discord.ext import commands
 intents = discord.Intents.all()
 
-bot = commands.Bot(command_prefix='TEC!',
-                   intents=intents)
-
 load_dotenv()
 TOKEN = os.environ['DISCORD_BOT_TOKEN']
+MONGO = os.environ['MONGO_URI']
+
 logging.basicConfig(level=logging.INFO)
 
 
@@ -31,6 +30,7 @@ class Bot(commands.Bot):
         cogs = ['src.cogs.ban',
                 'src.cogs.sourcecred',
                 'src.cogs.help']
+        self.MONGO = MONGO
         for extension in cogs:
             self.load_extension(extension)
             logging.info(f'Loaded cog - {extension}')

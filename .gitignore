@@ -131,3 +131,6 @@ dmypy.json
 # Tokens
 credentials.json
 token.json
+
+# Wallet temp file
+temp-wallet.txt
