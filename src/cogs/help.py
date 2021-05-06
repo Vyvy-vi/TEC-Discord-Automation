@@ -19,6 +19,7 @@ class CustomHelp(commands.HelpCommand):
 
     # TEC!help
     async def send_bot_help(self, mapping):
+        print(mapping)
         embed = Embed(title="Help Categories",
                       description=HelpDesc,
                       colour=0xdefb48)
@@ -47,7 +48,7 @@ class CustomHelp(commands.HelpCommand):
     async def send_group_help(self, group):
         embed = Embed(title="Help",
                       description=HelpDesc + '\nThat group doesn\'t exist',
-                      colour=Color.Red())
+                      colour=Color.red())
         await self.context.send(embed=embed)
 
     # TEC!help <cog>
