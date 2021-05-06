@@ -1,5 +1,3 @@
-import discord.utils
-
 from discord import Embed, Color, File
 from discord import Member, User
 from discord.ext import commands
@@ -15,12 +13,12 @@ async def write_data(db, user: Union[User, Member], wallet: str):
     '''Update the user data to MongoDB'''
     _user = await db.users.find_one({'id': str(user.id)})
     if _user:
-        updated_data = {"$set": {'username': user.name + user.discriminator,
+        updated_data = {"$set": {'username': user.name + '#' + user.discriminator,
                                  'wallet_address': wallet}}
         await db.users.update_one(_user, updated_data)
     else:
         await db.users.insert_one({'id': str(user.id),
-                                   'username': user.name + user.discriminator,
+                                   'username': user.name + '#' + user.discriminator,
                                    'wallet_address': wallet})
 
 
