@@ -27,7 +27,6 @@ class Forms(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.DB = MongoClient(bot.MONGO).test_db
-        self.form_history = []
 
     @commands.group(invoke_without_command=True, case_insensitive=True)
     async def forms(self, ctx: Context, name: Optional[str]):
