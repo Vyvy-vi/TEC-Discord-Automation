@@ -22,114 +22,17 @@ async def write_data(db, user: Union[User, Member], wallet: str):
                                    'wallet_address': wallet})
 
 
-class Forms(commands.Cog):
-    """Commands for collecting data for SourceCred or wallet lists"""
+class SourceCred(commands.Cog):
+    """Commands for collecting data for Form framework"""
     def __init__(self, bot):
         self.bot = bot
         self.DB = MongoClient(bot.MONGO).test_db
-        self.form_history = []
 
     @commands.group(invoke_without_command=True, case_insensitive=True)
-    async def forms(self, ctx: Context, name: Optional[str]):
+    async def sourcecred(self, ctx: Context, *, content: str):
         """Forms group to wrap around the commands"""
-        if name:
-            await self.info(ctx, name)
-        else:
-            await self.list(ctx)
-
-
-    @forms.command()
-    async def list(self, ctx: Context):
-        """Lists out all the available forms"""
-        form_list = await self.DB.forms.find_one({'_id': "__form_list__"})
-        if form_list and len(form_list['forms']) != 0:
-            embed = Embed(title='Forms', description='\n'.join(form_list['forms']), color = 16597246)
-        else:
-            embed = Embed(title='Forms', description='There are no forms present in the application', color=Color.red())
-        await ctx.send(embed=embed)
-
-
-    @forms.command()
-    async def info(self, ctx: Context, name: str):
-        """Returns for data for form passed as param"""
-        form = await self.DB.forms.find_one({'_id': name})
-        if form:
-            embed = Embed(title=form['_id'],
-                          description=form['description'] + f"\nTo start filling this form, use the command- `TEC!forms start {name}`",
-                          color=form['color'])
-            embed.set_image(url=form['img'])
-        else:
-            embed = Embed(description=f"The mentioned form - `{name}` doesn't exist.",
-                          color=Color.red())
-        await ctx.send(embed=embed)
-
-
-    @forms.command()
-    async def load(self, ctx: Context, name: str):
-        """Sends the form content"""
-        form = await self.DB.forms.find_one({'_id': name})
-        if form:
-            text = '\n'.join([f"**Q. {i[0]}**" for i in form['questions']])
-            embed = Embed(title=form['_id'],
-                          description=f"{form['description']}\nTo start filling this form, use the command- `TEC!forms start {name}`\n{text}",
-                          color=form['color'])
-            embed.set_image(url=form['img'])
-        else:
-            embed = Embed(description=f"The mentioned form - `{name}` doesn't exist.",
-                          color=Color.red())
-        await ctx.send(embed=embed)
-
-    async def form_runner(self, ctx: Context, name: str, form: Dict):
-        record = await self.DB.form_data.find_one({'_id': name})
-        _author = ctx.author
-        entries = {}
-        def check(m):
-            return m.channel == ctx.channel and m.author == ctx.author
-        for i in form['questions']:
-            embed = Embed(title=i[1], description=f"**{i[0]}**", color=form['color'])
-            await ctx.send(embed=embed)
-            try:
-                msg = await self.bot.wait_for('message', check=check)
-                if msg:
-                    entries[i[1]] = str(msg.content)
-            except asyncio.TimeoutError:
-                embed = Embed(description="Session timed out, maybe try re-filling the form later..",
-                              color=Color.red())
-                await ctx.send(embed=embed)
-                break
-
-        if record:
-            return_obj = {}
-            if str(_author.id) not in record:
-                await self.DB.form_data.update_one(record, {"$set": {f"data.{str(_author.id)}": {"username": _author.name + '#' + _author.discriminator}}})
-                record = await self.DB.form_data.find_one({'_id': name})
-            return_obj[f'data.{str(_author.id)}.username'] = _author.name + '#' + _author.discriminator
-            for i in entries:
-                return_obj[f'data.{str(_author.id)}.{i}'] = entries[i]
-            await self.DB.form_data.update_one(record, {"$set": return_obj})
-
-        else:
-            return_obj = {
-                    '_id': name,
-                    'data': {str(_author.id): {'username': _author.name + '#' + _author.discriminator}}
-                    }
-            for i in entries:
-                return_obj['data'][str(_author.id)][i] = entries[i]
-            print(return_obj)
-            await self.DB.form_data.insert_one(return_obj)
-
-    @forms.command()
-    async def start(self, ctx: Context, name: str):
-        """Starts the form process"""
-        form = await self.DB.forms.find_one({'_id': name})
-        if form:
-            await self.form_runner(ctx, name, form)
-        else:
-            embed = Embed(description=f"The mentioned form - `{name}` doesn't exist.",
-                          color=Color.red())
-            await ctx.send(embed=embed)
-
-
+        print(content)
+        print(type(content))
 
     @commands.command()
     async def wallet(self, ctx: Context):
@@ -150,13 +53,13 @@ class Forms(commands.Cog):
                           color=0xfd40fe)
         await ctx.send(embed=embed)
 
-    @commands.command()
+    @sourcecred.command()
     async def myinfo(self, ctx: Context):
         """command that displays all the user data the bot stores"""
         info = await self.DB.users.find_one({'id': str(ctx.author.id)})
         if info:
             text = [f'**{i}**: {info[i]}' for i in info if i != '_id']
-            embed = Embed(title='Your Wallet Info',
+            embed = Embed(title='Your Sourcecred Info',
                           color=ctx.author.color)
             for field in info:
                 if field != "_id":
@@ -168,24 +71,10 @@ class Forms(commands.Cog):
             embed.set_footer(text='For any name or address issues, contact a Steward or an Admin')
         await ctx.send(embed=embed)
 
-    @commands.command()
-    @commands.has_any_role('Stewards', 'Admin')
-    async def wallet_remove(self, ctx: Context, user: Union[Member, User]):
-        """commmand that removes a wallet entry from the database"""
-        info = await self.DB.users.find_one({'id': str(user.id)})
-        if info:
-            await self.DB.users.delete_one({'id': str(user.id)})
-            embed = Embed(description='Succesfully removed that wallet from the db.',
-                          color=Color.green())
-        else:
-            embed = Embed(description='There is no record of that wallet in the database.',
-                          color=Color.red())
-        await ctx.send(embed=embed)
 
-
-    @commands.command()
+    @sourcecred.command()
     @commands.has_any_role('Stewards', 'Admin')
-    async def wallet_list(self, ctx: Context):
+    async def data(self, ctx: Context):
         """command to fetch wallet address data"""
         data = []
         users = self.DB.users.find()
@@ -201,4 +90,4 @@ class Forms(commands.Cog):
         await ctx.send(file=File('temp-wallet.txt'))
 
 def setup(bot):
-    bot.add_cog(Forms(bot))
+    bot.add_cog(SourceCred(bot))
