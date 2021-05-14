@@ -29,6 +29,7 @@ class Bot(commands.Bot):
         """Loads all the cogs for the bot"""
         cogs = ['src.cogs.ban',
                 'src.cogs.sourcecred',
+                'src.cogs.forms',
                 'src.cogs.icebreakers',
                 'src.cogs.help']
         self.MONGO = MONGO
