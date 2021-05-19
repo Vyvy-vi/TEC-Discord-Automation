@@ -1,5 +1,36 @@
 {
   "extends": [
     "config:base"
+  ],
+  "baseBranches": [
+    "main"
+  ],
+  "assignees": [
+    "Vyvy-vi"
+  ],
+  "python": {
+    "enabled": true
+  },
+  "enabledManagers": ["pip_requirements", "pipenv", "github-actions"],
+  "packageRules": [
+    {
+      "matchManagers": ["pipenv"],
+      "enabled": true
+    {
+      "matchUpdateTypes": ["minor", "pin", "digest"],
+      "addLabels": ["🟨 priority: medium"]
+    },
+    {
+      "matchUpdateTypes": ["major", "patch"],
+      "addLabels": ["🟧 priority: high"]
+    },
+    {
+      "matchDepTypes": ["optionalDependencies"],
+      "addLabels": ["🟩 priority: low"]
+    },
+    {
+      "matchDepTypes": ["peerDependencies", "devDependencies"],
+      "addLabels": ["🟨 priority: medium"]
+    }]
   ]
 }
