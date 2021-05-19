@@ -9,49 +9,52 @@ from typing import Union, Optional, Dict
 from web3 import Web3
 from table2ascii import table2ascii, Alignment
 
-async def write_data(db, user: Union[User, Member], wallet: str):
+async def write_data(db, user: Union[User, Member], data: Dict):
     '''Update the user data to MongoDB'''
     _user = await db.users.find_one({'id': str(user.id)})
     if _user:
+        for i in _user:
+            if i not in data:
+                data[i] = _user[i]
         updated_data = {"$set": {'username': user.name + '#' + user.discriminator,
-                                 'wallet_address': wallet}}
+                                 'wallet_address': data.get("wallet_address", "NULL"),
+                                 'forum_username': data.get("forum_username", "NULL"),
+                                 'github_username': data.get("github_username", "NULL")}}
         await db.users.update_one(_user, updated_data)
     else:
-        await db.users.insert_one({'id': str(user.id),
-                                   'username': user.name + '#' + user.discriminator,
-                                   'wallet_address': wallet})
+        await db.users.insert_one({ 'id': str(user.id),
+                                    'username': user.name + '#' + user.discriminator,
+                                    'wallet_address': data.get("wallet_address", "NULL"),
+                                    'forum_username': data.get("forum_username", "NULL"),
+                                    'github_username': data.get("github_username", "NULL")})
 
 
 class SourceCred(commands.Cog):
-    """Commands for collecting data for Form framework"""
+    """Commands for collecting data for SourceCred"""
     def __init__(self, bot):
         self.bot = bot
         self.DB = MongoClient(bot.MONGO).test_db
 
     @commands.group(invoke_without_command=True, case_insensitive=True)
-    async def sourcecred(self, ctx: Context, *, content: str):
+    async def sourcecred(self, ctx: Context, *, socials: str):
         """Forms group to wrap around the commands"""
-        print(content)
-        print(type(content))
-
-    @commands.command()
-    async def wallet(self, ctx: Context):
-        """command to associate a user's wallet with their discord"""
-        if address:
-            valid = Web3.isAddress(address)
-            if valid:
-                await write_data(self.DB,
-                                 ctx.author,
-                                 address)
-                embed = Embed(description='Your wallet address has been updated!',
-                              color=0xfd40fe)
-            else:
-                embed = Embed(description='The entered Wallet Address is invalid',
-                              color=Color.red())
-        else:
-            embed = Embed(description='If you want to add your address more privately, dm the bot and use the command `TEC!wallet`',
-                          color=0xfd40fe)
+        data = {}
+        socials = socials.split('\n')
+        embed = Embed(description="Your details have been entered succesfully...", color=Color.green())
+        for field in socials:
+            if field.lower().startswith('github'):
+                data['github_username'] = field.split(' ')[1]
+            if field.lower().startswith('forum'):
+                data['forum_username'] = field.split(' ')[1]
+            if field.lower().startswith('wallet'):
+                address = field.split(' ')[1]
+                if Web3.isAddress(address):
+                    data['wallet_address'] = field.split(' ')[1]
+                else:
+                    embed = Embed(description="The entered ETH wallet address is invalid", color=Color.red())
+        await write_data(self.DB, ctx.author, data)
         await ctx.send(embed=embed)
+
 
     @sourcecred.command()
     async def myinfo(self, ctx: Context):
@@ -66,7 +69,7 @@ class SourceCred(commands.Cog):
                     embed.add_field(name=field, value=info[field], inline=False)
         else:
             embed = Embed(title='Your Wallet Info',
-                          description='There is no record of your wallet in the database. Use `TEC!wallet [address]` to add your wallet to the db',
+                          description='There is no record of you in the sourcecred database. Use `TEC!sourcecred` to add your wallet to the db',
                           color=Color.red())
             embed.set_footer(text='For any name or address issues, contact a Steward or an Admin')
         await ctx.send(embed=embed)
