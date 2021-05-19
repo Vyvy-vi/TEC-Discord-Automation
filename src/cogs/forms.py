@@ -7,20 +7,6 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 
 from typing import Union, Optional, Dict
 from web3 import Web3
-from table2ascii import table2ascii, Alignment
-
-async def write_data(db, user: Union[User, Member], wallet: str):
-    '''Update the user data to MongoDB'''
-    _user = await db.users.find_one({'id': str(user.id)})
-    if _user:
-        updated_data = {"$set": {'username': user.name + '#' + user.discriminator,
-                                 'wallet_address': wallet}}
-        await db.users.update_one(_user, updated_data)
-    else:
-        await db.users.insert_one({'id': str(user.id),
-                                   'username': user.name + '#' + user.discriminator,
-                                   'wallet_address': wallet})
-
 
 class Forms(commands.Cog):
     """Commands for collecting data for Form framework"""
@@ -95,8 +81,11 @@ class Forms(commands.Cog):
                 embed = Embed(description="Session timed out, maybe try re-filling the form later..",
                               color=Color.red())
                 await ctx.send(embed=embed)
-                break
-
+                return
+        embed = Embed(description=f"Thanks for filling the `{name}` form!",
+                      color=form['color'])
+        embed.set_image(url=form['img'])
+        await ctx.send(embed=embed)
         if record:
             return_obj = {}
             if str(_author.id) not in record:
