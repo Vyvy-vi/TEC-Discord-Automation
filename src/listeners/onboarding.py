@@ -1,3 +1,5 @@
+import asyncio
+
 from discord import Embed, Color
 from discord import utils
 
@@ -24,12 +26,12 @@ class Onboarding(Cog):
 
     @tasks.loop(hours=48.0)
     async def refresh_roles(self):
-        print('Running')
         server = self.bot.get_guild(810180621930070088)
         role = server.get_role(824363970852290600)
         for member in role.members:
             if ((datetime.now() - member.joined_at).days >= 14):
                 await member.remove_roles(role, reason="Onboarding Completed... Welcome to the TEC!!")
+                await asyncio.sleep(5)
 
     @refresh_roles.before_loop
     async def before_refresh_roles(self):
