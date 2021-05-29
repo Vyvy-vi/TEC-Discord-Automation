@@ -32,6 +32,7 @@ class Bot(commands.Bot):
                 'src.cogs.forms',
                 'src.cogs.icebreakers',
                 'src.cogs.help',
+                'src.cogs.users',
                 'src.listeners.onboarding']
         self.MONGO = MONGO
         for extension in cogs:
