@@ -1,8 +1,9 @@
 name: Import open source standard labels
 
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '40 17 * * 4'
 
 jobs:
   labels:
