@@ -1,4 +1,5 @@
 import os
+import yaml
 import discord
 import asyncio
 import logging
@@ -43,8 +44,19 @@ class Bot(commands.Bot):
         """Runs the bot"""
         if TOKEN is None:
             raise EnvironmentError("Token value not found in .env")
+        self.load_yaml()
         self.load_cogs()
         super().run(TOKEN)
+
+    def load_yaml(self) -> None:
+        """Loads Yaml files"""
+        logging.info("Loading YAML files...")
+
+        #with open("src/sources/trusted_seed_form.yml") as file:
+            #self.SEED_FORM = yaml.safe_load(file)
+
+        with open("src/sources/responses.yml") as file:
+            self.RESPONSES = yaml.safe_load(file)
 
     async def on_ready(self):
         logging.info('Starting...')
