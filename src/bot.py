@@ -1,4 +1,5 @@
 import os
+import yaml
 import discord
 import asyncio
 import logging
@@ -23,6 +24,7 @@ class Bot(commands.Bot):
         intents.presences = True
 
         super().__init__(command_prefix='TEC!',
+                         case_insensitive=True,
                          intents=intents)
 
     def load_cogs(self) -> None:
@@ -33,6 +35,7 @@ class Bot(commands.Bot):
                 'src.cogs.icebreakers',
                 'src.cogs.help',
                 'src.cogs.users',
+                'src.cogs.trustedseed',
                 'src.listeners.onboarding']
         self.MONGO = MONGO
         for extension in cogs:
@@ -43,8 +46,16 @@ class Bot(commands.Bot):
         """Runs the bot"""
         if TOKEN is None:
             raise EnvironmentError("Token value not found in .env")
+        self.load_yaml()
         self.load_cogs()
         super().run(TOKEN)
+
+    def load_yaml(self) -> None:
+        """Loads yaml files"""
+        with open("src/sources/trusted_seed_form.yml") as file:
+            logging.info("Loading YAML file for Trusted Seed form")
+            ts_form = yaml.safe_load(file)
+        self.SEED_FORM = ts_form
 
     async def on_ready(self):
         logging.info('Starting...')
