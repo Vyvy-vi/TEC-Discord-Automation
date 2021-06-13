@@ -1,0 +1,20 @@
+ERRORS: [
+ "I'm sorry {user}, I can't do that",
+ "I can't let you do that",
+ "Something messed up...",
+ "I don't think so., Not gonna happen.",
+]
+
+WELCOME_MESSAGE: 
+  DESC: "**Hi {user}, and welcome to the TEC! <:TEC:835016327542210560>\n🌈✨ We’re happy you’re here! 🌈✨\n\n🙋 Got questions? Join our weekly Onboarding AMA on Wednesdays at 4pm CET on our [#community-hall](https://discord.gg/jJuWXG2Mc2) channel on TEC Discord. <:TEC:835016327542210560>\n🌐 Join the community call on Discord on Thursdays at 7pm CET. ☎️ **\nWe also have an Incubator channel in Discord where we encourage all new people come since that’s where we often give updates!\n"
+
+  LINKS: [
+    ["<:TEC:835016327542210560> TE Commons 📎\nHere will find an overview of links to our channels and resources.", "[https://tecommons.org/join](https://tecommons.org/join)"],
+    ["🗓️ TEC Calendar ⏰\nOur meetings are open to all. Find one in our cal; looking forward to seeing you there!", "[https://calendar.google.com/calendar/u/0/embed?src=5mkep1ad1j860k6g7i7fr8plq0@group.calendar.google.com&ctz=Europe/Berlin](https://calendar.google.com/calendar/u/0/embed?src=5mkep1ad1j860k6g7i7fr8plq0@group.calendar.google.com&ctz=Europe/Berlin)"],
+    ["📽️  TEC YouTube 🎞️\nThe TEC is proactive to transparency, and so our Working Group sessions are all available on Youtube.", "[https://www.youtube.com/channel/UCagCOhMqMNU29rWx259-tcg](https://www.youtube.com/channel/UCagCOhMqMNU29rWx259-tcg)"],
+    ["For a great introduction on our design and values, watch Lívia’s talk at ETH Denver 'Deploying a self-governing community'", "[https://www.youtube.com/watch?v=DH7kOYJIwUo](https://www.youtube.com/watch?v=DH7kOYJIwUo)"],
+    ["📜 TEC Blog 📋\nAnd read the latest posts on our blog:", "[https://medium.com/token-engineering-commons/](https://medium.com/token-engineering-commons/)"]
+  ]
+  FOOTER: "Please feel free to look around, and reach out on Discord to `@Suga` (onboarding coordinator) if you have any questions.\n💫 Enjoy your stay! See you soon. 👋"
+
+

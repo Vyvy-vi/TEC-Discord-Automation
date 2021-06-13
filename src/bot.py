@@ -52,10 +52,13 @@ class Bot(commands.Bot):
 
     def load_yaml(self) -> None:
         """Loads yaml files"""
+        logging.info("Loading YAML files")
         with open("src/sources/trusted_seed_form.yml") as file:
-            logging.info("Loading YAML file for Trusted Seed form")
             ts_form = yaml.safe_load(file)
         self.SEED_FORM = ts_form
+
+        with open("src/sources/responses.yml") as file:
+            self.RESPONSES = yaml.safe_load(file)
 
     async def on_ready(self):
         logging.info('Starting...')
