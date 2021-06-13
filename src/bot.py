@@ -24,6 +24,7 @@ class Bot(commands.Bot):
         intents.presences = True
 
         super().__init__(command_prefix='TEC!',
+                         case_insensitive=True,
                          intents=intents)
 
     def load_cogs(self) -> None:
@@ -34,6 +35,7 @@ class Bot(commands.Bot):
                 'src.cogs.icebreakers',
                 'src.cogs.help',
                 'src.cogs.users',
+                'src.cogs.trustedseed',
                 'src.listeners.onboarding']
         self.MONGO = MONGO
         for extension in cogs:
@@ -49,11 +51,11 @@ class Bot(commands.Bot):
         super().run(TOKEN)
 
     def load_yaml(self) -> None:
-        """Loads Yaml files"""
-        logging.info("Loading YAML files...")
-
-        #with open("src/sources/trusted_seed_form.yml") as file:
-            #self.SEED_FORM = yaml.safe_load(file)
+        """Loads yaml files"""
+        logging.info("Loading YAML files")
+        with open("src/sources/trusted_seed_form.yml") as file:
+            ts_form = yaml.safe_load(file)
+        self.SEED_FORM = ts_form
 
         with open("src/sources/responses.yml") as file:
             self.RESPONSES = yaml.safe_load(file)

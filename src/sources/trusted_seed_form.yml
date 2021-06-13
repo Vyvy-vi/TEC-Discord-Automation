@@ -1,0 +1,81 @@
+META:
+  _id: trusted-seed
+  description: "This is an application to become a member of our [Trusted Seed](https://medium.com/commonsstack/the-trusted-seed-of-the-commons-stack-13d7e37f2de). Applicants will be accepted based on their alignment with [the mission](https://commonsstack.org/#about) of Commons Stack. Expertise in token engineering, decentralized governance, or commons R&D are especially welcomed and will increase the maximum [CSTK Score](https://medium.com/commonsstack/cstk-the-token-of-the-commons-stack-trusted-seed-931978625c61) applicants will be able to obtain.\nAcceptance to the Trusted Seed will allow you to become a member of the Commons Stack Association through our Swiss Membership DApp. Members may be invited to participate in the Hatch of various [Field Test Commons](https://faq.commonsstack.org/#what-is-a-field-test-commons), to guide these communities towards success in establishing value and bringing this new cooperative economic paradigm to maturity. Early entry into these Commons gives members greater influence over initial decision making within the Commons with the benefit of a unique legal shield offered by our Swiss Association."
+  color: 64154
+  img: "https://media.discordapp.net/attachments/811511649328431134/838809626190282752/footer.png"
+  how_to: "._."
+
+QUESTIONS:
+  full-name:
+    text: "The membership of the Trusted Seed is public, by completing this form you are consenting to be known publicly as a member. What is your full name?\n_We will never divulge your email address or other sensitive information, but your name may be linked to your social media profiles and the Ethereum address you give us._"
+    required: true
+  expertise: 
+    text: "What's your area of expertise"
+  motivation:
+    text: "What motivates you to become a member of the Trusted Seed, and what are your expectations?"
+  friends:
+    text: "Do you have any friends already in the Trusted Seed?\n_If you feel comfortable please share their names and/or handles (Twitter, Telegram, Discord, GitHub)._"
+    required: true
+  recommendation:
+    text:
+      "Do you want to recommend someone to join the Trusted Seed?\n_If you feel comfortable please share their Twitter handle, Telegram, Discord, or feel free to share the application yourself. Thank you!_"
+    required: true
+  cstk: 
+    text: "Have you already earned CSTK Tokens or Impact Hours?"
+    choices:
+      - "Yes, I received praise and/or donated"
+      - "No, I don't think so"
+    emojis:
+      - '🇾'
+      - '🇳'
+  contribution:
+    text: "How do you plan to contribute to the Commons Stack?"
+    choices:
+      - ["Contributing Time", "onboard"]
+      - ["Contributing Funds", "links"]
+      - ["Both", "onboard"]
+    emojis:
+      - '⏰'
+      - '💰'
+      - '🧙'
+    required: true
+  onboard:
+    text: "Would you like to be onboarded to our contributor board?\n_We have a curated list of issues that might match your motivation! :D_"
+    choices:
+      - "Yes"
+      - "No"
+    emojis:
+      - '🇾'
+      - '🇳'
+    required: true
+  skills:
+    text: "With what skills can you contribute?\n_You can pick more than one.\nChoose as many as you like_\nWhen you're done selecting, click on ✅ to submit it."
+    selections: ["Research", "Community Management", "Content Production", "UI/UX Design", "Graphic Design/Animation", "Fundraising", "Development", "Other"]
+    emojis: ['📚', '❤️', '📜', '📐', '🎨', '💰', '💡', '⚙️']
+    required: true
+  links:
+    text: "Please add links to your social media profiles. (LinkedIn, Twitter, GitHub etc.)"
+  email:
+    text: "What is your email address?\n_We will only use your email to contact you concerning this application form unless stated otherwise (see next question)._"
+    required: true
+  updates:
+    text: "We would love to send you occasional updates and opportunities to engage with the Commons Stack.\n_You can be confident your email address will never be shared with third parties._"
+    choices:
+      - "Yes, I would like to receive occasional updates on the Commons Stack"
+      - "No, please only contact me with regard to this application"
+    emojis:
+      - '🇾'
+      - '🇳'
+    required: true
+  eth_address:
+    text: "What Ethereum address (0x...) would you like to use for your [CSTK Score](https://medium.com/commonsstack/cstk-the-token-of-the-commons-stack-trusted-seed-931978625c61)?\n_It cannot be a contract wallet (do not use Argent or Gnosis Safe) as the Score is on xDAI. Please avoid using an ENS. We recommend using an address that is already publicly linked to your name or a new MetaMask address created just for this purpose._"
+    required: true
+  questions:
+    text: "Do you have any comments or questions we can answer?"
+  telegram:
+    text: "If you have Telegram handle please add it below.\n_We use it to dish you praise!_"
+  discord:
+    text: "If you have Discord handle please add it below.\n_We use these to dish you praise!_"
+  twitter:
+    text: "If you have Twitter handle please add it below.\n_We use these to dish you praise!_"
+
