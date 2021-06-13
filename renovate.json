@@ -18,11 +18,11 @@
       "enabled": true
     },
     {
-      "matchUpdateTypes": ["minor", "pin", "digest"],
+      "matchUpdateTypes": ["minor", "pin", "digest", "patch"],
       "addLabels": ["🟨 priority: medium"]
     },
     {
-      "matchUpdateTypes": ["major", "patch"],
+      "matchUpdateTypes": ["major"],
       "addLabels": ["🟧 priority: high"]
     },
     {
