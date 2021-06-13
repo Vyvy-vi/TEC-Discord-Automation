@@ -16,6 +16,7 @@
     {
       "matchManagers": ["pipenv"],
       "enabled": true
+    },
     {
       "matchUpdateTypes": ["minor", "pin", "digest"],
       "addLabels": ["🟨 priority: medium"]
@@ -31,6 +32,6 @@
     {
       "matchDepTypes": ["peerDependencies", "devDependencies"],
       "addLabels": ["🟨 priority: medium"]
-    }]
+    }
   ]
 }
