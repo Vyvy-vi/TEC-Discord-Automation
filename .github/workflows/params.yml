@@ -1,7 +1,7 @@
 name: TEC Params Call
 on:
   schedule:
-    - cron:  '0 19 * * 3'
+    - cron:  '0 14 * * 3'
   workflow_dispatch:
 jobs:
   send-updates:
@@ -24,6 +24,6 @@ jobs:
           TEXT: "Parameters WG Call in 1hour in Discord Voice channel: [https://discord.gg/NYaBbjTqh8](https://discord.gg/NYaBbjTqh8)"
           KEY: ${{ secrets.ENCRYPTION_KEY }}
           URL: 'e17ac9b19e4f6c6034aaa2b45f77dbe57887275b863e6d0dac94af801e38574576b2483e33adcf2cd4417d63f70a6d53bb87a5c914ddeee3bade877db2efe609fe92d5265cfb440c8449ba78b74ec2b6d044260a8c9799930a58b1e5ba2740556a57675ebc8a0823279d7c236de34b68e95add71ef9722778fdab40e1c63643e2ceb700d602f48678b4fb929b0ccc53e4edd8e88e15a99af7eda7e8f10dbbed2'
-          TIME: 'Wednesday, 10pm CET'
+          TIME: 'Wednesday, 5pm CET'
         run: |
           python actions/alerts.py
