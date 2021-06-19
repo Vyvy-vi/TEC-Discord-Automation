@@ -23,7 +23,7 @@ class Bot(commands.Bot):
         intents.members = True
         intents.presences = True
 
-        super().__init__(command_prefix='TEC!',
+        super().__init__(command_prefix='TESTEC!',
                          case_insensitive=True,
                          intents=intents)
 
@@ -36,6 +36,7 @@ class Bot(commands.Bot):
                 'src.cogs.help',
                 'src.cogs.users',
                 'src.cogs.trustedseed',
+                'src.exts.scrape_praise',
                 'src.listeners.onboarding']
         self.MONGO = MONGO
         for extension in cogs:
