@@ -22,15 +22,15 @@ class PraiseScrape(commands.Cog):
             dates = [int(char) for char in after.split('-')]
             after = datetime(dates[2], dates[1], dates[0])
         else:
-            # praise from 18 days ago from now
-            after=datetime.now() - timedelta(days=18)
+            # praise from 20 days ago from now
+            after=datetime.now() - timedelta(days=20)
 
         clean_msgs = [["To", "From", "Reason for Dishing", "Date", "Room"]]
         for channel in ctx.guild.text_channels:
-            await sleep(2)
+            await sleep(5)
             try:
                 await ctx.send(f"Attempting to get praise from - {channel.name}")
-                msgs = await channel.history(after=after).flatten()
+                msgs = await channel.history(after=after, limit=None).flatten()
                 for msg in msgs:
                     if msg.content.startswith('!praise'):
                         for person in msg.mentions:

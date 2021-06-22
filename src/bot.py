@@ -23,7 +23,7 @@ class Bot(commands.Bot):
         intents.members = True
         intents.presences = True
 
-        super().__init__(command_prefix='TEC!',
+        super().__init__(command_prefix='TESTTEC!',
                          case_insensitive=True,
                          intents=intents)
 
