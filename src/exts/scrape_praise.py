@@ -36,8 +36,8 @@ class PraiseScrape(commands.Cog):
                         for person in msg.mentions:
                             clean_msgs.append(
                                 [
-                                    "@" + person.name,
-                                    msg.author.name + msg.author.discriminator,
+                                    person.name + "#" + person.discriminator,
+                                    msg.author.name + "#" + msg.author.discriminator,
                                     re.sub(r'(<@).*?>', '', utils.escape_mentions(msg.content)[8:]).strip().replace('\n', ' '),
                                     msg.created_at.strftime("%b-%d-%Y"),
                                     msg.channel.name
