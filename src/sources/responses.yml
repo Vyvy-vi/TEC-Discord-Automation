@@ -17,4 +17,5 @@ WELCOME_MESSAGE:
   ]
   FOOTER: "Please feel free to look around, and reach out on Discord to `@Suga` (onboarding coordinator) if you have any questions.\n💫 Enjoy your stay! See you soon. 👋"
 
+VERIFICATION_ERROR: "**Hi {user}, and welcome to the TEC! <:TEC:835016327542210560> **\nIn order to keep our discord server from bots, we use a captcha system to ensure that only humans join the server. You could join the server by going to this link and filling in the captcha- [https://discord.tecommons.org/](https://discord.tecommons.org)\nAfter filling the captcha, you'll automatically be added to the server. After that to get FULL ACCESS to the server, you'll have to go to the #join-here, read and acknowledge the guidelines"
 
