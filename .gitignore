@@ -134,3 +134,6 @@ token.json
 
 # Wallet temp file
 temp-wallet.txt
+
+# praise-log
+praise*.csv
