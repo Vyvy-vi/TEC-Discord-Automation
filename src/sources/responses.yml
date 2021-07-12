@@ -6,7 +6,7 @@ ERRORS: [
 ]
 
 WELCOME_MESSAGE: 
-  DESC: "**Hi {user}, and welcome to the TEC! <:TEC:835016327542210560>\n🌈✨ We’re happy you’re here! 🌈✨\n\n🙋 Got questions? Join our weekly Onboarding AMA on Wednesdays at 4pm CET on our [#community-hall](https://discord.gg/jJuWXG2Mc2) channel on TEC Discord. <:TEC:835016327542210560>\n🌐 Join the community call on Discord on Thursdays at 7pm CET. ☎️ **\nWe also have an Incubator channel in Discord where we encourage all new people come since that’s where we often give updates!\n"
+  DESC: "**Hi {user}, and welcome to the TEC! <:TEC:835016327542210560>\n🌈✨ We’re happy you’re here! 🌈✨\n\n🙋 Got questions? Join our weekly Onboarding AMA on Wednesdays at 6pm CET on our [#community-hall](https://discord.gg/jJuWXG2Mc2) channel on TEC Discord. <:TEC:835016327542210560>\n🌐 Join the community call on Discord on Thursdays at 7pm CET. ☎️ **\nWe also have an Orientation channel in Discord where we encourage all new people come since that’s where we often give updates!\n"
 
   LINKS: [
     ["<:TEC:835016327542210560> TE Commons 📎\nHere will find an overview of links to our channels and resources.", "[https://tecommons.org/join](https://tecommons.org/join)"],
