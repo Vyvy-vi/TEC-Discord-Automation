@@ -1,4 +1,4 @@
-name: TEC AMA - Welcome!
+name: TEC Lounge!
 on:
   schedule:
     - cron:  '0 15 * * 5'
