@@ -19,7 +19,7 @@ jobs:
           pip install -r actions/requirements.txt
       - name: Send updates
         env:
-          IMG: 'Banner_orientation.png'
+          IMG: 'banner_orientation.png'
           TITLE: 'Orientation - Welcome to the TEC!'
           TEXT: "Join the Orientation call!\nWe meet at the TEC Community Hall voice channel:\n[https://discord.gg/fNPx3a2h9R](https://discord.gg/fNPx3a2h9R)\nIf you're new to the TEC, join us for an orientation session to learn more about the TEC! Everyone is welcome 🥳"
           KEY: ${{ secrets.ENCRYPTION_KEY }}
