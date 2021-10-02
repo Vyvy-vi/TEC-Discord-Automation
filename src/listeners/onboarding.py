@@ -19,7 +19,7 @@ class Onboarding(Cog):
         self.refresh_roles.start()
         self.MSG = self.bot.RESPONSES['WELCOME_MESSAGE']
 
-    @tasks.loop(hours=48.0)
+    @tasks.loop(hours=18.0)
     async def refresh_roles(self):
         server = self.bot.get_guild(810180621930070088)
         role = server.get_role(824363970852290600)
