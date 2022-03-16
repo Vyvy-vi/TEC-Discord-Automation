@@ -11,6 +11,7 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 from typing import Union, Optional, Dict
 from datetime import datetime
 
+
 class Onboarding(Cog):
     """Help command and some other helper commands"""
     def __init__(self, bot):
@@ -32,6 +33,7 @@ class Onboarding(Cog):
     async def before_refresh_roles(self):
         print("Role Refresh loop standing by...")
         await self.bot.wait_until_ready()
+
 
 def setup(bot):
     bot.add_cog(Onboarding(bot))

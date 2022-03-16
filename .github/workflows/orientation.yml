@@ -1,11 +1,11 @@
-name: Orientation - Welcome to the TEC!
+name: Onboarding - Welcome to the TEC!
 on:
   schedule:
     - cron:  '0 16 * * 3'
   workflow_dispatch:
 jobs:
   send-updates:
-    name: Send AMA alert to general channel
+    name: Send Onboarding call alert to general channel
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2    

@@ -30,14 +30,15 @@ class Bot(commands.Bot):
     def load_cogs(self) -> None:
         """Loads all the cogs for the bot"""
         cogs = ['src.cogs.ban',
-                'src.cogs.sourcecred',
-                'src.cogs.forms',
-                'src.cogs.icebreakers',
+                #'src.cogs.sourcecred',
+                #'src.cogs.forms',
+                #'src.cogs.icebreakers',
                 'src.cogs.help',
                 'src.cogs.users',
-                'src.cogs.trustedseed',
+                #'src.cogs.trustedseed',
                 'src.exts.scrape_praise',
-                'src.listeners.onboarding']
+                'src.exts.scrape_praise_samples',
+                'src.exts.scrape_onboarding_data']
         self.MONGO = MONGO
         for extension in cogs:
             self.load_extension(extension)
