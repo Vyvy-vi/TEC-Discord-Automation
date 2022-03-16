@@ -40,9 +40,15 @@ class OnboardingDataScrape(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    def in_bot_setup_channel(ctx):
+        return ctx.channel.id == 810180622017757185
 
     @commands.command()
+    @commands.guild_only()
+    @commands.check(in_bot_setup_channel)
     @commands.has_any_role('Admin', 873234054449881198)
+    @commands.max_concurrency(2)
+    @commands.cooldown(1, 20, commands.BucketType.member)
     async def get_onboarding_data(self, ctx: Context, after: str = None):
         await ctx.send(f'Fetching Onboarding data from {ctx.guild.name}...')
 
