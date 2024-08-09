@@ -12,7 +12,7 @@ motor = "*"
 dnspython = "*"
 web3 = "*"
 table2ascii = "*"
-aiohttp = ">=3.7.4"
+aiohttp = ">=3.10.2"
 
 [dev-packages]
 pylint-runner = "*"
